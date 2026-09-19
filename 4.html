@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你不能同时拥有这些</title>
+    <style>
+        .a{
+            display: flex;
+            align-items: center;
+        }
+
+        .sw{appearance:none;width:40px;height:20px;background:#999;border-radius:10px;transition:.2s;cursor:pointer;display: flex;align-items: center;}
+        .sw:checked{background:#333}
+        .sw::after{content:"";display:block;width:18px;height:18px;background:#fff;border-radius:50%;transition:.2s}
+        .sw:checked::after{transform:translateX(20px);}
+    </style>
+</head>
+<body>
+    <div class="a">
+        <p>参加运动会</p>
+        <input type="checkbox" class="sw" id="yun">
+    </div>
+    <div class="a">
+        <p>学习</p>
+        <input type="checkbox" class="sw" id="xue">
+    </div>
+    <div class="a">
+        <p>回家</p>
+        <input type="checkbox" class="sw" id="jia">
+    </div>
+    <script>
+        const yun = document.getElementById('yun');
+        const xue = document.getElementById('xue');
+        const jia = document.getElementById('jia');
+        yun.addEventListener('change',() => {
+            if (yun.checked) {
+                xue.checked = false;
+                jia.checked = false;
+            } else {
+                jia.checked = true;
+            }
+        });
+        xue.addEventListener('change',() => {
+            if (xue.checked) {
+                yun.checked = false;
+                jia.checked = true;
+            } else {
+                
+            }
+        });
+        jia.addEventListener('change',() => {
+            if (jia.checked) {
+                yun.checked = false;
+                
+            } else {
+                yun.checked = true;
+                xue.checked = false;
+            }
+        })
+
+    </script>
+</body>
+</html>
